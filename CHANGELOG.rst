@@ -2,8 +2,8 @@
 Changelog for package innok_heros_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2015-10-20)
+------------------
 * fixed dependencies
 * Contributors: Sabrina Heerklotz
 
