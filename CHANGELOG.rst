@@ -2,6 +2,11 @@
 Changelog for package innok_heros_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fixed CMakeLists.txt
+* Contributors: Sabrina Heerklotz
+
 1.0.1 (2015-10-20)
 ------------------
 * fixed dependencies
