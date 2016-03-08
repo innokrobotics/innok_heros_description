@@ -8,7 +8,8 @@
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find innok_heros_description)/urdf/innok_heros_$(arg wheels)w$(arg tyre_type).xacro'" />
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
-
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  
   <!-- Config file for Rviz   -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_description)/launch/innok_heros.rviz"/>
 
