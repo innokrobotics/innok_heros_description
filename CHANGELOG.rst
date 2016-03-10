@@ -2,8 +2,8 @@
 Changelog for package innok_heros_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.3 (2016-03-10)
+------------------
 * added missing run_depend
 * added joint_state_publisher to get correct tf when launching RViz
 * Contributors: Sabrina Heerklotz
