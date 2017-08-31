@@ -47,8 +47,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		
   <gazebo reference="wheel_${front_rear}_${left_right}">
     <gravity>true</gravity>
-    <mu1>5</mu1>
-    <mu2>5</mu2>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
     <kd>1</kd>
     <kp>10000000000.0</kp>
     <fdir1>0 0 1</fdir1>

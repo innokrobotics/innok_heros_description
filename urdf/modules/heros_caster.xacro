@@ -47,7 +47,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
   <joint name="caster_top_joint" type="fixed">
     <origin xyz="${dx} 0 -0.006" rpy="0 0 0" />
-    <parent link="base_link" />
+    <parent link="beam_link" />
     <child link="caster_top" />
     <axis xyz="0 0 0" />
   </joint>

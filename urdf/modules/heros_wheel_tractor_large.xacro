@@ -29,9 +29,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       </geometry>
     </collision>			
     <visual>
-      <origin xyz="0 0.115 0" rpy="${-PI/2} 0 0"/>
+      <origin xyz="0 0.115 0" rpy="0 0 ${-PI/2}"/>
       <geometry>
-        <mesh filename="package://innok_heros_description/meshes/wheel_tractor.STL" />
+        <mesh filename="package://innok_heros_description/meshes/wheel_tractor_large.STL" />
       </geometry>
       <material name="">
         <color rgba="0.25 0.25 0.25 1" />

@@ -48,7 +48,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
   <joint name="mounting_plate_joint" type="fixed">
     <origin xyz=" ${dx} 0 0.05" rpy="0 0 0" />
-    <parent link="base_link" />
+    <parent link="beam_link" />
     <child link="mounting_plate" />
     <axis xyz="0 0 0" />
   </joint>

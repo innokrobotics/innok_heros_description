@@ -22,14 +22,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_base_link">		
 <xacro:macro name="heros_base_link">
 
-  <link name="base_link">
+  <link name="base_link"/>
+
+  <link name="beam_link">
     <inertial>
       <origin xyz="0.40 0 0.02" rpy="0 0 0" /> <mass value="2" />
       <inertia ixx="0.003" ixy="0" ixz="0" iyy="0.09" iyz="0" izz="0.09" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry> <mesh filename="package://innok_heros_description/meshes/base_link.STL" /> </geometry>
+      <geometry> <mesh filename="package://innok_heros_description/meshes/beam.STL" /> </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>
       </material>
@@ -39,6 +41,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       <geometry> <box size="0.8 0.160 0.040"/> </geometry>
     </collision>
   </link>
+
+  <joint name="beam_joint" type="fixed">
+    <origin
+      xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="beam_link" />
+    <axis xyz="0 0 0" />
+  </joint>
  
 </xacro:macro>
 </robot>
