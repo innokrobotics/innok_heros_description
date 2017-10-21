@@ -7,14 +7,15 @@
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>100</updateRate>
-      <leftJoint>joint_base_wheel_rear_right</leftJoint>
-      <rightJoint>joint_base_wheel_rear_left</rightJoint>
+      <leftJoint>joint_base_wheel_rear_left</leftJoint>
+      <rightJoint>joint_base_wheel_rear_right</rightJoint>
       <wheelSeparation>${wheel_seperation}</wheelSeparation>
       <wheelDiameter>${2*wheel_radius}</wheelDiameter>
       <wheelTorque>130</wheelTorque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <robotBaseFrame>base_link</robotBaseFrame>
+      <legacyMode>false</legacyMode>
     </plugin>
   </gazebo>
  
