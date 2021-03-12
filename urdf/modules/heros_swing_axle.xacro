@@ -43,7 +43,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     </collision>
   </link>
   <joint name="swing_axle_top_joint" type="fixed">
-    <origin xyz="${dx} -0.22 -0.2" rpy="0 0 ${PI/2}" />
+    <origin xyz="${dx} -0.215 -0.2" rpy="0 0 ${PI/2}" />
     <parent link="beam_link" />
     <child link="swing_axle_top" />
     <axis xyz="0 0 0" />

@@ -17,7 +17,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 -->
 
-<robot name="innok_heros_3" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="innok_heros_3" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:property name="PI" value="3.1415926535897931"/>
   <xacro:property name="wheel_radius" value="0.160" />
@@ -32,19 +32,20 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_caster.xacro" />
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_battery.xacro" />
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_mounting_plate.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_pan.xacro" />  
+
 
   <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_joint_pub.xacro" />
   <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_diff_drive.xacro" />
 
   <!-- heros modules--> 
-  <heros_base_link   							/>
-  <heros_drive   	  front_rear='rear'     dx='0.018' flip_z='1'/>
-  <heros_caster  	 	         	dx='0.637'		/>
-  <heros_battery 	  name='battery_box'    dx='0.336'		/>
-  <heros_mounting_plate   wheels='3'		dx='-0.02'		/>
+  <xacro:heros_base_link/>
+  <xacro:heros_drive front_rear='rear' dx='0.018' flip_z='1'/>
+  <xacro:heros_caster dx='0.637'/>
+  <xacro:heros_battery name='battery_box' dx='0.336'/>
+  <xacro:heros_mounting_plate wheels='3' dx='-0.02'/>
 
   <!-- heros ROS plugins-->
-  <heros_joint_pub joints='joint_base_wheel_rear_left, joint_base_wheel_rear_right, caster_bot_joint, caster_wheel_joint'					/>
-  <heros_diff_drive 							/> 
-
+  <xacro:heros_joint_pub joints='joint_base_wheel_rear_left, joint_base_wheel_rear_right, caster_bot_joint, caster_wheel_joint'					/>
+  <xacro:heros_diff_drive 							/> 
 </robot>
