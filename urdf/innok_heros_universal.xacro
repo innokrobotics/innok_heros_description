@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<!--
+Software License Agreement (BSD)
+
+\authors Tobias Griepentrog
+\maintainer Sabrina Heerklotz <sh@innok-robotics.de>
+\copyright Copyright (c) 2021, Innok Robotics GmbH, All rights reserved
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<robot name="innok_heros_universal" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name="innok_heros_universal" params="wheel_number wheel_kind swing_axle">
+
+  <material name="Grey">
+    <color rgba="0.66 0.66 0.66 1"/>
+  </material>
+
+<!-- Defining xacro properties -->
+  <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="wheel_seperation" value="0.580" />
+  <xacro:property name="wheel_number_prop"   value="${wheel_number}"/>
+  <xacro:property name="wheel_kind_prop"   value="${wheel_kind}"/>
+  <!-- Wheel specifications -->
+  <xacro:if value="${wheel_kind_prop == 0}">
+    <xacro:property name="wheel_radius" value="0.160" />
+    <xacro:property name="wheel_width"  value="0.160" />
+    <xacro:property name="wheel_mass"   value="5.4" />
+    <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_wheel.xacro"/>
+  </xacro:if>   
+  
+  <xacro:if value="${wheel_kind_prop == 1}">
+    <xacro:property name="wheel_radius" value="0.200" />
+    <xacro:property name="wheel_width"  value="0.100" />
+    <xacro:property name="wheel_mass"   value="5.4" />
+    <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_wheel_tractor.xacro" />
+  </xacro:if>  
+
+  <xacro:if value="${wheel_kind_prop == 2}">
+    <xacro:property name="wheel_radius" value="0.300" />
+    <xacro:property name="wheel_width"  value="0.200" />
+    <xacro:property name="wheel_mass"   value="5.4" />
+    <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_wheel_tractor_large.xacro" />
+  </xacro:if>
+
+<!-- Including non optional .xacro files -->
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_base_link.xacro"/>
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_drive.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_battery.xacro" />
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_mounting_plate.xacro" />
+ 
+<!-- Including wheel number specific .xacro files (choosen in .launch file)... -->
+<!-- ... and declaring wheel number specific macros with its parameters -->
+  <xacro:if value="${wheel_number_prop == 3}">
+    <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_joint_pub.xacro" />
+    <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_diff_drive.xacro" />
+    <xacro:heros_base_link   							/>
+    <xacro:heros_drive   	  front_rear='rear'     dx='0.018' flip_z='1' wheel_kind='${wheel_kind_prop}'/>
+    <xacro:heros_battery 	  name='battery_box'    dx='0.336'		/>
+    <xacro:heros_mounting_plate   wheels='${wheel_number_prop}'   dx='-0.02'		/>    
+    <xacro:heros_diff_drive 							/>     
+    <!-- Front wheel configuration: Swing axle or caster -->
+    <xacro:if value="${swing_axle}">
+        <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_swing_axle.xacro" /> 
+        <xacro:heros_swing_axle 	 	         	dx='1.02'		/>
+        <xacro:heros_joint_pub joints='joint_base_wheel_rear_left, joint_base_wheel_rear_right, caster_wheel_left_joint, caster_wheel_right_joint, swing_axle_joint, caster_left_joint, caster_right_joint'/>
+    </xacro:if>
+    <xacro:unless value="${swing_axle}">
+        <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_caster.xacro" />
+        <xacro:heros_caster  	 	         	dx='0.637'		/>
+        <xacro:heros_joint_pub joints='joint_base_wheel_rear_left, joint_base_wheel_rear_right, caster_bot_joint, caster_wheel_joint'					/>    
+    </xacro:unless>
+  </xacro:if>
+   
+  <xacro:if value="${wheel_number_prop == 4}">
+    <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_joint_pub.xacro" />
+    <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_skid_drive.xacro" />
+    <xacro:heros_base_link   							/>
+    <xacro:heros_drive   	  front_rear='front'     dx='0.782' flip_z='-1' wheel_kind='${wheel_kind_prop}'/>
+    <xacro:heros_drive   	  front_rear='rear'     dx='0.018' flip_z='1' wheel_kind='${wheel_kind_prop}'/>
+    <xacro:heros_battery 	  name='battery_box'    dx='0.336'		/>
+    <xacro:heros_mounting_plate   wheels='${wheel_number_prop}'		dx='-0.02'		/>
+    <xacro:heros_joint_pub joints='joint_base_wheel_rear_left, joint_base_wheel_rear_right, joint_base_wheel_front_left, joint_base_wheel_front_right'		/>
+    <xacro:heros_skid_drive 							/> 
+  </xacro:if>
+</xacro:macro>
+</robot>

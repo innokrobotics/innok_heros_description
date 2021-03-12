@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <launch>
-
-  <arg name="wheels" default="3"/>	<!-- "3" or "4" -->
-  <arg name="tyre_type" default=""/>	<!-- "default" or "tractor" -->
+  <arg name="wheel_number" default="3"/>	<!-- "3" or "4" -->
+  <arg name="tyre_type" default=""/>	<!-- "" or "tractor" -->
+  <arg name="swing_axle" default="true"/> <!-- "true" or "false" -->
 
   <!-- Send the Innok Heros URDF/XACRO to param server -->
-  <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find innok_heros_description)/urdf/innok_heros_$(arg wheels)w$(arg tyre_type).xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find innok_heros_description)/urdf/innok_heros.xacro'
+              wheel_number:=$(arg wheel_number) wheel_kind:=$(arg tyre_type) swing_axle:=$(arg swing_axle)" />
 
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
   
   <!-- Config file for Rviz   -->
