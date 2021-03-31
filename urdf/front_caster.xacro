@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot name="heros_caster" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_joint_pub.xacro" />
+    <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_diff_drive.xacro" />
+    <heros_base_link   							/>
+    <heros_drive   	  front_rear='rear'     dx='0.018' flip_z='1' wheel_kind='${wheel_kind}'/>
+    <heros_battery 	  name='battery_box'    dx='0.336'		/>
+    <heros_mounting_plate   wheels='${wheel_number}'   dx='-0.02'		/>    
+    <heros_diff_drive 							/>     
+    <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_caster.xacro" />
+    <heros_caster  	 	         	dx='0.637'		/>
+    <heros_joint_pub joints='joint_base_wheel_rear_left, joint_base_wheel_rear_right, caster_bot_joint, caster_wheel_joint'/>
+</robot>

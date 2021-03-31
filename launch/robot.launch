@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="false"/>
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="yaw" default="0.0"/>
+  <arg name="wheel_kind" default="default"/>   <!-- default | tractor | tractor_large -->
+  <arg name="front_kind" default="swing_axle"/> <!-- swing_axle | caster | 4wd -->
+
+  <remap from="/innok_heros_velocity_controller/cmd_vel" to="/cmd_vel"/>
+	<remap from="/innok_heros_velocity_controller/odom" to="/odom"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="false" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="false"/>
+  </include>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <group if="$(eval arg('front_kind') == '4wd')">
+    <rosparam file="$(find innok_heros_description)/config/heros_skid_steer.yaml" command="load"/>
+  </group>
+  <rosparam file="$(find innok_heros_description)/config/heros_diff_drive.yaml" unless="$(eval arg('front_kind') == '4wd')" command="load"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find innok_heros_description)/urdf/innok_heros.xacro'
+            front_kind:=$(arg front_kind) wheel_kind:=$(arg wheel_kind)" />
+  
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -z 0.4 -x $(arg x) -y $(arg y) -Y $(arg yaw) -model innok_heros -param robot_description"/>
+
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="controller_manager" respawn="false"
+	  output="screen"  args="spawn innok_heros_velocity_controller innok_heros_joint_publisher"/>
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+</launch>

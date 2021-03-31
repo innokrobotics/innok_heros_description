@@ -1,0 +1,5 @@
+collision_footprint:
+  heros: 
+    footprint: [[1.16,0.39], [-0.60,0.39], [-0.60,-0.39], [1.16,-0.39]]
+    frame: 'base_link'
+    

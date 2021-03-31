@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="heros_caster" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name="heros_front">
+    <xacro:include filename="$(find innok_heros_description)/urdf/ROS/heros_ros_control.xacro" />
+    <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_caster.xacro" />
+    <xacro:heros_mounting_plate wheels='3' dx='-0.02'/>    
+    <xacro:heros_caster dx='0.637'/>
+    <xacro:heros_ros_control/>
+</xacro:macro>     
+</robot>

@@ -5,9 +5,9 @@ Description of the wheel module for the Innok Heros mobile platform.
 
 Software License Agreement (BSD)
 
-\authors Jonathan Hechtbauer
+\authors Tobias Griepentrog
 \maintainer Sabrina Heerklotz <sh@innok-robotics.de>
-\copyright Copyright (c) 2015, Innok Robotics GmbH, All rights reserved
+\copyright Copyright (c) 2021, Innok Robotics GmbH, All rights reserved
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -19,7 +19,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 -->
 
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_wheel">		
+
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="heros_wheel">		
 <xacro:macro name="heros_wheel" params="front_rear left_right flip_y flip_z">
 
   <link name="wheel_${front_rear}_${left_right}">
@@ -32,7 +34,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://innok_heros_description/meshes/wheel.STL" />
+	      <mesh filename="$(find innok_heros_description)/meshes/${wheel_mesh}" />
       </geometry>
       <material name="">
         <color rgba="0.25 0.25 0.25 1" />
@@ -50,7 +52,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <mu1>10</mu1>
     <mu2>10</mu2>
     <kd>1</kd>
-    <kp>10000000000.0</kp>
+    <kp>1000000000.0</kp>
     <fdir1>0 0 1</fdir1>
     <selfCollide>false</selfCollide>
     <material>Gazebo/Grey</material>
@@ -66,7 +68,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <transmission name="trans_wheel_${front_rear}_${left_right}">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_base_wheel_${front_rear}_${left_right}">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="motor_wheel_${front_rear}_${left_right}">
       <mechanicalReduction>100</mechanicalReduction>

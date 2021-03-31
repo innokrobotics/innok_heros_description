@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="wheel_number" default="3"/>	<!-- "3" or "4" -->
-  <arg name="tyre_type" default="0"/>	<!-- "" or "tractor" -->
-  <arg name="swing_axle" default="true"/> <!-- "true" or "false" -->
-
+  <arg name="wheel_kind" default="default"/>   <!-- default | tractor | tractor_large -->
+  <arg name="front_kind" default="4wd"/>       <!-- swing_axle | caster | 4wd -->
   <!-- Send the Innok Heros URDF/XACRO to param server -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find innok_heros_description)/urdf/innok_heros.xacro'
-              wheel_number:=$(arg wheel_number) wheel_kind:=$(arg tyre_type) swing_axle:=$(arg swing_axle)" />
+            front_kind:=$(arg front_kind) wheel_kind:=$(arg wheel_kind)" />
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>

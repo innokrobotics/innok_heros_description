@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_joint_pub">		
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="heros_joint_pub">		
 <xacro:macro name="heros_joint_pub" params="joints">
 
   <gazebo>

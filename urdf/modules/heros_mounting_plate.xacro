@@ -5,9 +5,9 @@ Description of the mounting plate module for the Innok Heros mobile platform.
 
 Software License Agreement (BSD)
 
-\authors Jonathan Hechtbauer
+\authors Tobias Griepentrog
 \maintainer Sabrina Heerklotz <sh@innok-robotics.de>
-\copyright Copyright (c) 2015, Innok Robotics GmbH, All rights reserved
+\copyright Copyright (c) 2021, Innok Robotics GmbH, All rights reserved
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -19,7 +19,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 -->
 
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_plate">		
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="heros_plate">		
 <xacro:macro name="heros_mounting_plate" params="wheels dx">
 
   <link name="mounting_plate">
@@ -32,7 +32,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://innok_heros_description/meshes/mounting_plate_${wheels}w.STL" />
+        <mesh filename="$(find innok_heros_description)/meshes/mounting_plate_${wheels}w.STL" />
       </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>

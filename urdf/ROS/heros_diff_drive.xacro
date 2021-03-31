@@ -2,22 +2,32 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_diff_drive">		
 <xacro:macro name="heros_diff_drive" >
-
-  <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>100</updateRate>
-      <leftJoint>joint_base_wheel_rear_left</leftJoint>
-      <rightJoint>joint_base_wheel_rear_right</rightJoint>
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    <alwaysOn>true</alwaysOn>
+    <legacyMode>false</legacyMode>
+    <updateRate>100</updateRate>
+    <robotNamespace>/</robotNamespace>
+      <leftJoint>joint_base_wheel_rear_right</leftJoint>
+      <rightJoint>joint_base_wheel_rear_left</rightJoint>
       <wheelSeparation>${wheel_seperation}</wheelSeparation>
       <wheelDiameter>${2*wheel_radius}</wheelDiameter>
       <wheelTorque>130</wheelTorque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <robotBaseFrame>base_link</robotBaseFrame>
-      <legacyMode>false</legacyMode>
-    </plugin>
-  </gazebo>
+    <torque>36.9</torque>
+    <odometryFrame>odom</odometryFrame>
+    <odometrySource>world</odometrySource>
+    <publishTf>1</publishTf>
+    <rosDebugLevel>na</rosDebugLevel>
+    <wheelAcceleration>0</wheelAcceleration>
+    <wheelTorque>5</wheelTorque>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <publishWheelTF>false</publishWheelTF>
+    <publishWheelJointState>false</publishWheelJointState>
+  </plugin>
+</gazebo>
  
 </xacro:macro>
 </robot>

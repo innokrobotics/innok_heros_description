@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <package>
   <name>innok_heros_description</name>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <description>Innok Heros URDF description and RVIZ launch file</description>
 
   <maintainer email="sh@innok-robotics.de">Sabrina Heerklotz</maintainer>
-  <author email="jh@innok-robotics.de">Jonathan Hechtbauer</author>
+  <author email="tobias.griepentrog@innok-robotics.de">Tobias Griepentrog</author>
 
   <url type="website">http://wiki.ros.org/Robots/Innok-Heros</url>
 

@@ -1,14 +1,18 @@
 <?xml version="1.0"?>
 <robot name="innok_heros_full" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:arg name="wheel_number" default="3" />
-  <xacro:arg name="wheel_kind" default="0" />
-  <xacro:arg name="swing_axle" default="true" />
+
+  <xacro:arg name="wheel_kind" default="default" /> <!-- default | tractor | tractor_large -->
+  <xacro:arg name="front_kind" default="swing_axle" /> <!-- swing_axle | caster | 4wd -->
 
   <!-- constants-->
   <xacro:include filename="$(find innok_heros_description)/urdf/constants.xacro"/>
 
   <!-- heros base-->
   <xacro:include filename="$(find innok_heros_description)/urdf/innok_heros_universal.xacro"/>
-  <xacro:innok_heros_universal wheel_number='$(arg wheel_number)' swing_axle='$(arg swing_axle)' wheel_kind='$(arg wheel_kind)'/>
-  <update_rate>1</update_rate>
+  <xacro:innok_heros front_kind='$(arg front_kind)' wheel_kind='$(arg wheel_kind)'/>
+
+   <update_rate>1</update_rate>   
+
+
+
 </robot>

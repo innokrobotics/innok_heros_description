@@ -5,9 +5,9 @@ Description of the drive module for the Innok Heros mobile platform.
 
 Software License Agreement (BSD)
 
-\authors Jonathan Hechtbauer
+\authors Tobias Griepentrog
 \maintainer Sabrina Heerklotz <sh@innok-robotics.de>
-\copyright Copyright (c) 2015, Innok Robotics GmbH, All rights reserved
+\copyright Copyright (c) 2021, Innok Robotics GmbH, All rights reserved
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -19,35 +19,25 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 -->
 
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heros_drive">		
-<xacro:macro name="heros_drive" params="front_rear dx flip_z wheel_kind:=0">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="heros_drive">		
+<xacro:macro name="heros_drive" params="front_rear dx flip_z">
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_wheel.xacro" />
 
-  <xacro:if value="${wheel_kind == 0}">
-    <xacro:heros_wheel front_rear="${front_rear}" left_right="left"  flip_y="1"  flip_z="${flip_z}"/>
-    <xacro:heros_wheel front_rear="${front_rear}" left_right="right" flip_y="-1" flip_z="${flip_z}"/>
-  </xacro:if>
-  <xacro:if value="${wheel_kind == 1}">
-    <xacro:heros_wheel_tractor front_rear="${front_rear}" left_right="left"  flip_y="1"  flip_z="${flip_z}"/>
-    <xacro:heros_wheel_tractor front_rear="${front_rear}" left_right="right" flip_y="-1" flip_z="${flip_z}"/>
-  </xacro:if>
-  <xacro:if value="${wheel_kind == 2}">
-    <xacro:heros_wheel_tractor_large front_rear="${front_rear}" left_right="left"  flip_y="1"  flip_z="${flip_z}"/>
-    <xacro:heros_wheel_tractor_large front_rear="${front_rear}" left_right="right" flip_y="-1" flip_z="${flip_z}"/>
-  </xacro:if>
+  <xacro:heros_wheel front_rear="${front_rear}" left_right="left"  flip_y="1"  flip_z="${flip_z}"/>
+  <xacro:heros_wheel front_rear="${front_rear}" left_right="right" flip_y="-1" flip_z="${flip_z}"/>
   
     
     
   <link name="drive_box_${front_rear}">
     <inertial>
       <origin xyz="0.122 -0.0026 -0.136" rpy="0 0 0" />
-       <!--mass value="10.6" /-->
-       <mass value="0.5" /> 
+       <mass value="10.6" /> 
       <inertia ixx="0.316" ixy="0" ixz="0" iyy="0.166" iyz="0" izz="0.307" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://innok_heros_description/meshes/drive_box.STL" />
+        <mesh filename="$(find innok_heros_description)/meshes/drive_box.STL" />
       </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>
