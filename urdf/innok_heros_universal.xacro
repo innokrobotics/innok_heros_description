@@ -24,7 +24,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <color rgba="0.66 0.66 0.66 1"/>
   </material>
   <!-- Defining xacro properties -->
-  <xacro:property name="PI" value="3.1415926535897931"/>
   <xacro:property name="wheel_seperation" value="0.580" />
   <xacro:property name="camera_link" value="0.05" />
 

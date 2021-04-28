@@ -4,9 +4,6 @@
   <xacro:arg name="wheel_kind" default="default" /> <!-- default | tractor | tractor_large -->
   <xacro:arg name="front_kind" default="swing_axle" /> <!-- swing_axle | caster | 4wd -->
 
-  <!-- constants-->
-  <xacro:include filename="$(find innok_heros_description)/urdf/constants.xacro"/>
-
   <!-- heros base-->
   <xacro:include filename="$(find innok_heros_description)/urdf/innok_heros_universal.xacro"/>
   <xacro:innok_heros front_kind='$(arg front_kind)' wheel_kind='$(arg wheel_kind)'/>

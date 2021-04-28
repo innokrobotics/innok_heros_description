@@ -26,7 +26,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
   <link name="wheel_${front_rear}_${left_right}">
     <collision>
-      <origin xyz="0 0.115 0" rpy="${-PI/2} 0 0"/>
+      <origin xyz="0 0.115 0" rpy="${-pi/2} 0 0"/>
       <geometry>
         <cylinder radius="${wheel_radius}" length="${wheel_width}" />
       </geometry>
@@ -61,7 +61,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <joint name="joint_base_wheel_${front_rear}_${left_right}" type="continuous">
     <parent link="drive_box_${front_rear}"/>
     <child link="wheel_${front_rear}_${left_right}"/>
-    <origin xyz="0.063 ${flip_y*flip_z * 0.162} -0.184" rpy="0 0 ${PI/2 - PI/2*flip_y*flip_z }"/>
+    <origin xyz="0.063 ${flip_y*flip_z * 0.162} -0.184" rpy="0 0 ${pi/2 - pi/2*flip_y*flip_z }"/>
     <axis xyz="0 ${flip_y * 1} 0" />
   </joint>
 		

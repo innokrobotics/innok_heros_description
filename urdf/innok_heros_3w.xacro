@@ -19,7 +19,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 <robot name="innok_heros_3" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:property name="PI" value="3.1415926535897931"/>
   <xacro:property name="wheel_radius" value="0.160" />
   <xacro:property name="wheel_width"  value="0.160" />
   <xacro:property name="wheel_mass"   value="5.4" />

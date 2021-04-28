@@ -43,7 +43,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     </collision>
   </link>
   <joint name="swing_axle_top_joint" type="fixed">
-    <origin xyz="${dx} -0.215 -0.2" rpy="0 0 ${PI/2}" />
+    <origin xyz="${dx} -0.215 -0.2" rpy="0 0 ${pi/2}" />
     <parent link="beam_link" />
     <child link="swing_axle_top" />
     <axis xyz="0 0 0" />
@@ -207,14 +207,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
   <joint name="caster_left_joint" type="continuous">
-    <origin xyz="-0.215 -0.055 0" rpy="${-PI/2} ${-PI/2} 0" />
+    <origin xyz="-0.215 -0.055 0" rpy="${-pi/2} ${-pi/2} 0" />
     <parent link="swing_axle_bot" />
     <child link="caster_left" />
     <axis xyz="0 0 1" />
   </joint>
 
   <joint name="caster_right_joint" type="continuous">
-    <origin xyz="0.215 -0.055 0" rpy="${-PI/2} ${-PI/2} 0" />
+    <origin xyz="0.215 -0.055 0" rpy="${-pi/2} ${-pi/2} 0" />
     <parent link="swing_axle_bot" />
     <child link="caster_right" />
     <axis xyz="0 0 1" />
