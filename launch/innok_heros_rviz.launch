@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="wheel_kind" default="default"/>   <!-- default | tractor | tractor_large -->
-  <arg name="front_kind" default="4wd"/>       <!-- swing_axle | caster | 4wd -->
+  <arg name="front_kind" default="swing_axle"/>       <!-- swing_axle | caster | 4wd -->
   <!-- Send the Innok Heros URDF/XACRO to param server -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find innok_heros_description)/urdf/innok_heros.xacro'
             front_kind:=$(arg front_kind) wheel_kind:=$(arg wheel_kind)" />
