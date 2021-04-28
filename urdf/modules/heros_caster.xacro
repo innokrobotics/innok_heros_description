@@ -31,7 +31,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="$(find innok_heros_description)/meshes/caster_top.STL" />
+        <mesh filename="package://innok_heros_description/meshes/caster_top.STL" />
       </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>
@@ -61,7 +61,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="$(find innok_heros_description)/meshes/caster_bot.STL" />
+        <mesh filename="package://innok_heros_description/meshes/caster_bot.STL" />
       </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>
@@ -92,7 +92,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="$(find innok_heros_description)/meshes/caster_wheel.STL" />
+        <mesh filename="package://innok_heros_description/meshes/caster_wheel.STL" />
       </geometry>
       <material name="">
         <color rgba="0.25 0.25 0.25 1" />

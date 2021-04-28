@@ -31,7 +31,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry> <mesh filename="$(find innok_heros_description)/meshes/beam.STL" /> </geometry>
+      <geometry> <mesh filename="package://innok_heros_description/meshes/beam.STL" /> </geometry>
       <material name="white">
         <color rgba="1 1 1 1"/>
       </material>
